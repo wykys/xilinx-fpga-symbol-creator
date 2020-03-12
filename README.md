@@ -24,5 +24,5 @@ optional arguments:
 
 ``` bash
 # create a library
-src/main.py data/xc7s15ftgb196pkg.txt "XC7S15-FTGB196" "Spartan 7" > my_libaray.lib
+src/main.py data/xc7s15ftgb196pkg.txt "XC7S15-FTGB196" "Spartan 7" > my_library.lib
 ```
