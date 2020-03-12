@@ -4,6 +4,7 @@
 
 import re
 from pathlib import Path
+from argparse import ArgumentParser
 
 
 class PinType(object):
@@ -380,6 +381,23 @@ def make_symbol(pins: list, part: str, title: str) -> str:
 
 
 if __name__ == '__main__':
-    pins = load('../data/xc7s15ftgb196pkg.txt')
-    code = make_symbol(pins, 'XC7S15-FTGB196', 'Spartan 7')
+    parser = ArgumentParser('Xilinx FPGA symbol creator')
+    parser.add_argument(
+        dest='path',
+        action='store',
+        help='Xilinx text file pin description.',
+    )
+    parser.add_argument(
+        dest='part',
+        action='store',
+        help='The name under which the part will be created in the library.',
+    )
+    parser.add_argument(
+        dest='name',
+        action='store',
+        help='Marking on the schematic symbol.',
+    )
+    args = parser.parse_args()
+    pins = load(args.path)
+    code = make_symbol(pins, args.part, args.name)
     print(code)
